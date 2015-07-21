@@ -1,0 +1,19 @@
+<h1><%= @topic.title %></h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <ul>
+              <li><%= link_to bookmark.url, "#{bookmark.url}" %></li>
+            </ul>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
