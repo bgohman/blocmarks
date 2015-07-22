@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :topics
-  
+  resources :topics, only: [:index] do
+    resources :bookmarks
+  end
   root 'welcome#index'
 
   get 'about' => 'welcome#about'

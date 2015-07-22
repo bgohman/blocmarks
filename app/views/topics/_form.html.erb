@@ -1,0 +1,17 @@
+<%= form_for [topic] do |f| %>
+    <% if topic.errors.any? %>
+      <div class="alert alert-danger">
+        <h4>There are <%= pluralize(topic.errors.count, "error") %>.</h4>
+        <ul>
+          <% topic.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <%end %>
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: "Enter the Topic Title" %></br>
+    <div class="form-group">
+      <%= f.submit "Save", class: 'btn btn-success' %>
+    </div>
+<% end %>

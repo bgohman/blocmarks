@@ -8,11 +8,18 @@
           <h4 class="media-heading">
             <ul>
               <li><%= link_to bookmark.url, "#{bookmark.url}" %></li>
+              <%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark) %>
+              <%= link_to "Delete", [@topic, bookmark], method: :delete, data: { confirm: 'Delete this topic for sure?' } %>
             </ul>
           </h4>
         </div>
       </div>
     <% end %>
+    <%= render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @bookmark } %>
+  </div>
+  <div class="col-md-4">  
+    <%= link_to "Edit Topic", edit_topic_path %>
+    <%= link_to "Delete Topic", @topic, method: :delete, data: { confirm: 'Delete this topic for sure?' } %>
   </div>
 
 </div>
