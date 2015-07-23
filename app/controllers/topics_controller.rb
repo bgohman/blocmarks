@@ -11,10 +11,13 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    authorize @topic
   end
 
   def create
     @topic = Topic.new(topic_params)
+    authorize @topic
+    @topic.user = current_user
     if @topic.save
       flash[:notice] = "Topic was saved."
       redirect_to topics_path
@@ -26,10 +29,12 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:id])
+    authorize @topic
   end  
 
   def update
     @topic = Topic.find(params[:id])
+    authorize @topic
     if @topic.update_attributes(topic_params)
       flash[:notice] = "Topic was updated."
       redirect_to @topic
@@ -41,8 +46,9 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic = Topic.find(params[:id])
+    authorize @topic
     if @topic.destroy
-      flash[:notice] = "\"#{@topic.name}\" was deleted successfully."
+      flash[:notice] = "\"#{@topic.title}\" was deleted successfully."
       redirect_to topics_path
     else
       flash[:error] = "There was an error deleting the topic.  Please try again."

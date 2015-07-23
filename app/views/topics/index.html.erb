@@ -12,8 +12,10 @@
           <h4 class="media-heading">
             <ul>
               <li><%= link_to topic.title, topic %></li>
-              <%= link_to "Edit", edit_topic_path(topic) %>
-              <%= link_to "Delete", topic, method: :delete, data: { confirm: 'Delete this topic for sure?' } %>
+              <% if policy(topic).edit? %>
+                <%= link_to "Edit", edit_topic_path(topic) %>
+                <%= link_to "Delete", topic, method: :delete, data: { confirm: 'Delete this topic for sure?' } %>
+              <% end %>
             </ul>
           </h4>
         </div>
