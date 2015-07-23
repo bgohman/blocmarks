@@ -1,0 +1,46 @@
+<h1>My Bookmarks</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <% @user_bookmarks.each do |bookmark| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <ul>
+              <li><%= link_to bookmark.url, "#{bookmark.url}" %></li>
+              <%= render partial: 'likes/like', locals: { topic: bookmark.topic, bookmark: bookmark } %>
+              <% if policy(bookmark).edit? %>
+                <%= link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark) %>
+                <%= link_to "Delete", [bookmark.topic, bookmark], method: :delete, data: { confirm: 'Delete this topic for sure?' } %>
+              <% end %>
+            </ul>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<h1>Liked Bookmarks</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <% @liked_bookmarks.each do |bookmark| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <ul>
+              <li><%= link_to bookmark.url, "#{bookmark.url}" %></li>
+              <%= render partial: 'likes/like', locals: { topic: bookmark.topic, bookmark: bookmark } %>
+              <% if policy(bookmark).edit? %>
+                <%= link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark) %>
+                <%= link_to "Delete", [bookmark.topic, bookmark], method: :delete, data: { confirm: 'Delete this topic for sure?' } %>
+              <% end %>
+            </ul>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
