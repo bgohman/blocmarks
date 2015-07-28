@@ -1,11 +1,11 @@
 class BookmarksController < ApplicationController
   def new
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @bookmark = Bookmark.new
   end
 
   def create
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @bookmark = Bookmark.new( bookmark_params )
     authorize @bookmark
     @bookmark.topic = @topic
@@ -20,19 +20,19 @@ class BookmarksController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:topic_id]) 
+    @topic = Topic.friendly.find(params[:topic_id]) 
     @bookmark = bookmark.find(params[:id])
     authorize @bookmark
   end
 
   def edit
-    @topic = Topic.find(params[:topic_id]) 
+    @topic = Topic.friendly.find(params[:topic_id]) 
     @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
   end
 
   def update
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
     if @bookmark.update_attributes(params.require(:bookmark).permit(:url))
@@ -45,7 +45,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find(params[:topic_id])    
+    @topic = Topic.friendly.find(params[:topic_id])    
     @bookmark = Bookmark.find(params[:id])
     authorize @bookmark
     if @bookmark.destroy
