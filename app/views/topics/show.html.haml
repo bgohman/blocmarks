@@ -11,15 +11,12 @@
 
 .row  
   - @bookmarks.each do |bookmark|
-    .col-md-3
-      .media
-        .media-body
-          .media-heading
-            = link_to bookmark.url, "#{bookmark.url}"
-            = render partial: 'likes/like', locals: { topic: @topic, bookmark: bookmark }
-            - if policy(bookmark).edit?
-              = link_to "Edit", edit_topic_bookmark_path(@topic, bookmark)
-              = link_to "Delete", [@topic, bookmark], method: :delete, data: { confirm: 'Delete this topic for sure?' }
+    .col-md-6
+      = render partial: 'likes/like', locals: { topic: @topic, bookmark: bookmark }
+      <a class="embedly-card" href="#{bookmark.url}"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+      - if policy(bookmark).edit?
+        = link_to "Edit", edit_topic_bookmark_path(@topic, bookmark)
+        = link_to "Delete", [@topic, bookmark], method: :delete, data: { confirm: 'Delete this topic for sure?' }
 
 .div
   = render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @bookmark }

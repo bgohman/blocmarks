@@ -17,6 +17,7 @@ gem 'stripe'
 gem 'redcarpet'
 gem 'haml'
 gem 'friendly_id', '~> 5.1.0'
+gem 'embedly'
 
 group :production do
    gem 'pg'
