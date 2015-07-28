@@ -1,0 +1,3 @@
+- provide(:title, "Edit #{@topic.title}")
+%h1 Edit #{@topic.title}
+= render partial: 'form', locals: { topic: @topic }

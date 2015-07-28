@@ -1,0 +1,11 @@
+- provide(:title, "Home")
+.center.jumbotron
+  %h1 Blocmarks
+  %h2
+    This is the home page for my
+    = link_to "Blocmarks", "http://www.bloc.io"
+    project.
+  %p
+    = link_to "Sign In", new_user_session_path, class: 'btn btn-primary'
+    or
+    = link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary'

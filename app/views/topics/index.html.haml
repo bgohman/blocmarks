@@ -1,0 +1,18 @@
+- provide(:title, "Topics")
+.row
+  .col-md-8
+  %h1 Topics
+  .col-md-4
+  = link_to "New Topic", new_topic_path, class: 'btn btn-success'
+  - @topics.each do |topic|
+    .media
+      .media-body
+        %h4
+          .media-heading
+            %ul
+              %li
+                = link_to topic.title, topic
+                - if policy(topic).edit?
+                  %p
+                    = link_to "Edit", edit_topic_path(topic)
+                    = link_to "Delete", topic, method: :delete, data: { confirm: 'Delete this topic for sure?' }

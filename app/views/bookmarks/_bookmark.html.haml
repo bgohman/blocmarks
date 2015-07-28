@@ -1,0 +1,13 @@
+.media
+  .media-body
+    %h4
+      .media-heading
+        %ul
+          %li
+            = link_to bookmark.url, "#{bookmark.url}"
+            = render partial: 'likes/like', locals: { topic: bookmark.topic, bookmark: bookmark }
+            - if policy(bookmark).edit?
+              = link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark)
+              = link_to "Delete", [bookmark.topic, bookmark], method: :delete, data: { confirm: 'Delete this topic for sure?' }
+
+

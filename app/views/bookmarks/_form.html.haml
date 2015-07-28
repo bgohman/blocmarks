@@ -1,0 +1,14 @@
+= form_for [topic, bookmark] do |f|
+  - if bookmark.errors.any?
+    .alert.alert-danger
+      %h4
+        There are
+        = pluralize(bookmark.errors.count, "error")
+      %ul
+        - bookmark.errors.full_messages.each do |msg|
+          %li
+            = msg
+  .form-group
+    = f.text_field :url, class: 'form-control', autofocus: true, placeholder: "Enter a url to save a new bookmark."
+  .form-group
+    = f.submit "Save", class: 'btn btn-success'

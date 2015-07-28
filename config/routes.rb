@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   get 'users/show'
 
   devise_for :users
-  resources :users
-  resources :topics
-  resources :topics, only: [:index] do
+  resources :users, only: [:show]
+  resources :topics do
     resources :bookmarks do
       resources :likes, only: [:create, :destroy]
     end

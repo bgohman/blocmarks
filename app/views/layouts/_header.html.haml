@@ -1,0 +1,27 @@
+%header
+  .navbar.navbar-fixed-top
+    .container
+      %nav
+        %ul
+          .nav.navbar-nav.navbar-left
+            %li
+              = link_to "Blocmarks", root_path
+            %li
+              = link_to "Topics", topics_path
+        %ul
+          .nav.navbar-nav.navbar-right
+            - if current_user
+              %li
+                = link_to "Hello, #{current_user.name.capitalize}!", current_user
+              %li
+                = link_to "Settings", edit_user_registration_path(current_user)
+              %li
+                = link_to "Sign out", destroy_user_session_path, method: :delete
+            - else
+              %li
+                = link_to "Sign in", new_user_session_path
+            %li
+              = link_to "Home", root_path
+            %li
+              = link_to "About", about_path
+
