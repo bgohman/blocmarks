@@ -23,7 +23,7 @@ function blocmetricsReport(name) {
   var eventName = { name: name };
   var request = new XMLHttpRequest();
   //request.open("POST", "http://localhost:3000/api/events", true);
-  request.open("POST", "http://bgohman-blocmetrics.herokuapp.com/api/events", true);
+  request.open("POST", "https://bgohman-blocmetrics.herokuapp.com/api/events", true);
   request.setRequestHeader('Content-Type', 'application/json');
 
   request.send(JSON.stringify(eventName));
