@@ -1,13 +1,6 @@
 - provide(:title, "My Bookmarks")
-%h1 My Bookmarks
+%h1 Bookmarks that I like
 
 .row
-  .col-md-8
-    = render partial: 'bookmarks/bookmark', collection: @user_bookmarks
-
-%h1 Liked Bookmarks
-
-.row
-  .col-md-8
-    = render partial: 'bookmarks/bookmark', collection: @liked_bookmarks
+  = render partial: 'bookmarks/bookmark', collection: @liked_bookmarks
 

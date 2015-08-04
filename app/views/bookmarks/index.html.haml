@@ -1,0 +1,7 @@
+- provide(:title, "All Bookmarks")
+
+
+%h1 Bookmarks
+
+.row
+  = render partial: 'bookmarks/bookmark', collection: @bookmarks

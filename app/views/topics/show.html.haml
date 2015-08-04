@@ -1,22 +1,14 @@
 - provide(:title, "#{@topic.title}")
-
-.row
-  .col-md-8
-    %h1 
-      = @topic.title
-  - if policy(@topic).edit?
-    .col-md-4 
-      = link_to "Edit Topic", edit_topic_path
-      = link_to "Delete Topic", @topic, method: :delete, data: { confirm: 'Delete this topic for sure?' }
-
-.row  
-  - @bookmarks.each do |bookmark|
+.container
+  .row
     .col-md-6
-      = render partial: 'likes/like', locals: { topic: @topic, bookmark: bookmark }
-      <a class="embedly-card" href="#{bookmark.url}"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
-      - if policy(bookmark).edit?
-        = link_to "Edit", edit_topic_bookmark_path(@topic, bookmark)
-        = link_to "Delete", [@topic, bookmark], method: :delete, data: { confirm: 'Delete this topic for sure?' }
-
-.div
-  = render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @bookmark }
+      %h1 
+        = @topic.title
+    .col-md-6
+      = render partial: 'bookmarks/form', locals: { topic: @topic, bookmark: @bookmark }
+.container
+  - if policy(@topic).edit?
+    = link_to "Edit Topic", edit_topic_path
+    = link_to "Delete Topic", @topic, method: :delete, data: { confirm: 'Delete this topic for sure?' }
+.row  
+  = render partial: 'bookmarks/bookmark', collection: @bookmarks

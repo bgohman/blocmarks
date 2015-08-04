@@ -2,7 +2,18 @@
 @import "bootstrap";
 
 body {
+  margin-top: 20px;
   padding-top: 60px;
+  color: #C2C2A3;
+  background-color: #E0E0E0;
+}
+
+a {
+ color: #C2C2A3;
+}
+
+h1 {
+  margin-top: 0px;
 }
 
 section {
@@ -18,4 +29,41 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.custom-color {
+  background-color: #36403B;
+  color: white;
+}
+
+.footer {
+  border-top: 5px solid #36403B;
+  margin-top: 5px
+}
+
+.embedly-card {
+  height: 180px;
+}
+
+.small-border {
+  border: 1px solid #36403B;
+  margin: 2px;
+  width: 49%;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.btn-primary {
+    background: #C2C2A3;
+    color: #36403B;
+    border: none;
+}
+ 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #36403B;
+    color: #C2C2A3;
+}
+
+.one-liner {
+  display: inline;
 }

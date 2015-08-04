@@ -1,13 +1,9 @@
-.media
-  .media-body
-    %h4
-      .media-heading
-        %ul
-          %li
-            = link_to bookmark.url, "#{bookmark.url}"
-            = render partial: 'likes/like', locals: { topic: bookmark.topic, bookmark: bookmark }
-            - if policy(bookmark).edit?
-              = link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark)
-              = link_to "Delete", [bookmark.topic, bookmark], method: :delete, data: { confirm: 'Delete this topic for sure?' }, onclick: "blocmetricsReport('bookmark update')",
+.col-md-6.small-border
+  = render partial: 'likes/like', locals: { topic: bookmark.topic, bookmark: bookmark }
+  - if policy(bookmark).edit?
+    = link_to "Edit", edit_topic_bookmark_path(bookmark.topic, bookmark)
+    = link_to "Delete", [bookmark.topic, bookmark], method: :delete, data: { confirm: 'Delete this topic for sure?' }
+  <a class="embedly-card" href="#{bookmark.url}"></a><script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+
 
 
