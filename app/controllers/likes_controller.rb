@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
 
   def create
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:bookmark_id])
     @like = current_user.likes.build(bookmark: @bookmark)
     authorize @like
@@ -14,7 +14,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:bookmark_id])
     @like = current_user.liked(@bookmark)
     authorize @like

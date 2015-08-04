@@ -1,15 +1,19 @@
+
+%p#demo
 - if policy(Like.new).create?
   - if like = current_user.liked(bookmark)
-    = link_to [topic, bookmark, like], method: :delete do
+    = link_to [topic, bookmark, like], onclick: "blocmetricsReport('unlike')", method: :delete do
       %i 
         .glyphicon.glyphicon-star
         &nbsp; unlike
       %br
       
   - else
-    = link_to [topic, bookmark, Like.new], method: :post do
+    = link_to [topic, bookmark, Like.new], onclick: "blocmetricsReport('like')", method: :post do
       %i 
         .glyphicon.glyphicon-star-empty
         &nbsp; like
       %br
+        
+
       

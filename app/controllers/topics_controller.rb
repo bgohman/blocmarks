@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_action
+
   def index
     @topics = Topic.all
   end
